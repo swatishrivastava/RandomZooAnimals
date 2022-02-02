@@ -23,7 +23,12 @@ constructor(private val repo: IRepository) : ViewModel() {
     val errorLiveData: LiveData<Int>
         get() = mutableErrorLiveData
 
-    fun getAllAnimals() {
+
+    init {
+        getAllAnimals()
+    }
+
+    private fun getAllAnimals() {
         viewModelScope.launch {
             var result = repo.getAllAnimalList()
             handleResponse(result)

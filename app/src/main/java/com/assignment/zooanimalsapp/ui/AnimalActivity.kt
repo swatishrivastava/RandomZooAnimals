@@ -33,7 +33,6 @@ class AnimalActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         prepareList()
-        animalViewModel.getAllAnimals()
     }
 
 
