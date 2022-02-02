@@ -15,24 +15,14 @@ import com.assignment.zooanimalsapp.repository.AnimalRepo
 import com.assignment.zooanimalsapp.ui.base.BaseActivity
 import com.assignment.zooanimalsapp.utils.getErrorMessageFromCode
 import com.hellofresh.task2.utils.observe
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class AnimalActivity : BaseActivity() {
 
     private lateinit var adapter: AnimalAdapter
-
-    class ViewModelFactory(
-        private val recipeApi: AnimalRepo,
-    ) : ViewModelProvider.NewInstanceFactory() {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T =
-            AnimalViewModel(recipeApi) as T
-    }
-
-    private val animalViewModel: AnimalViewModel by viewModels {
-        ViewModelFactory(
-            AnimalRepo(AnimalClient.api),
-        )
-    }
+    private val animalViewModel: AnimalViewModel by viewModels()
 
     override fun observeViewModel() {
         observe(animalViewModel.animalLiveData, ::updateListWithAnimalsData)

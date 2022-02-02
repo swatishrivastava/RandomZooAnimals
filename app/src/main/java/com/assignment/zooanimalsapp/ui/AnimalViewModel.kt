@@ -7,9 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.assignment.zooanimalsapp.AnimalDataItem
 import com.assignment.zooanimalsapp.network.NetworkResult
 import com.assignment.zooanimalsapp.repository.IRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AnimalViewModel(private val repo: IRepository) : ViewModel() {
+@HiltViewModel
+class AnimalViewModel @Inject
+constructor(private val repo: IRepository) : ViewModel() {
 
     private var mutableLiveData = MutableLiveData<List<AnimalDataItem>>()
     val animalLiveData: LiveData<List<AnimalDataItem>>
