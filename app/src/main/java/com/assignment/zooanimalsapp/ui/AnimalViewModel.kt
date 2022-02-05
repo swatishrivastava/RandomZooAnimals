@@ -28,7 +28,7 @@ constructor(private val repo: IRepository) : ViewModel() {
         getAllAnimals()
     }
 
-    private fun getAllAnimals() {
+     fun getAllAnimals() {
         viewModelScope.launch {
             var result = repo.getAllAnimalList()
             handleResponse(result)
